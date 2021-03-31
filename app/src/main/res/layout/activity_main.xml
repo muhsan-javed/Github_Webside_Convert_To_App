@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginTop="-2dp"
+        android:progress="20"
+        android:visibility="gone"
+        />
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/myWebView"
+
+       />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/RelativeLayout">
+
+
+        <ImageView
+            android:layout_width="250sp"
+            android:layout_height="250sp"
+            android:src="@drawable/no_internet_connection"
+            android:id="@+id/noConnectionLogo"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Internet Connection"
+            android:layout_below="@id/noConnectionLogo"
+            android:textAlignment="center"
+            android:textSize="26sp"
+            android:gravity="center_horizontal"
+            android:id="@+id/txtNoConnection"/>
+
+        <Button
+            android:id="@+id/btnNoConnection"
+            android:layout_width="140dp"
+            android:layout_height="65dp"
+            android:layout_below="@id/txtNoConnection"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:text="Retry"
+            android:textColor="#ffffff"
+            app:backgroundTint="@color/white" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

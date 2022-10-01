@@ -42,6 +42,8 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.util.logging.LogRecord;
+
 public class MainActivity extends AppCompatActivity {
 
     WebView webView;
@@ -53,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnNoInternetConnection;
 
     SwipeRefreshLayout swipeRefreshLayout;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         btnNoInternetConnection = findViewById(R.id.btnNoConnection);
         relativeLayout = findViewById(R.id.RelativeLayout);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
 
         swipeRefreshLayout.setColorSchemeColors(Color.BLUE,Color.YELLOW,Color.GREEN);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -201,15 +202,7 @@ public class MainActivity extends AppCompatActivity {
             webView.goBack();
         }
         else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure you want to Exit")
-                    .setNegativeButton("No",null)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finishAffinity();
-                        }
-                    }).show();
+            ExitDialog();
         }
 
     }
@@ -270,9 +263,29 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_reload:
                 checkConnection();
                 break;
+            case R.id.nav_download:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("MJ browser version 1.0.1")
+                        .setNegativeButton("Ok",null).show();
+                break;
+            case R.id.nav_Exit:
+                 
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void ExitDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to Exit")
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishAffinity();
+                    }
+                }).show();
     }
 
     @Override
